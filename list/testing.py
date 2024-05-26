@@ -1,30 +1,24 @@
-nums = [2, 4, 3, 5]
+def generate_sublists(nums):
+    n = len(nums)
+    all_sublists = []
+    
+    # Iterasi melalui semua kemungkinan kombinasi biner dari 0 hingga 2^n
+    for i in range(2**n):
+        sublist = []
+        # Konversi angka i menjadi representasi biner dan gunakan sebagai penanda kehadiran elemen
+        for j in range(n):
+            if (i >> j) & 1:
+                sublist.append(nums[j])
+        all_sublists.append(sublist)
+    
+    return all_sublists
 
-# buffer = [] 
-
-test = [3, 7]
-# test = [4, 3]
-# test = [2, 4, 3, 5]
-if test == nums:
-    print(True)
-elif test == []:
-    print(True)
-elif len(test) > len(nums):
-    print(False)
-else:
-    for i in range(0, len(nums)):
-        if nums[i]  == test[0]:
-            n = 1
-            while(n < len(test) and nums[i+n] == test[n]):
-                n += 1
-        
-            if n == len(test):
-                print(True)
-            else:
-                print(False)
+nums = [10, 20, 30, 40]
+sublists = generate_sublists(nums)
+print(sublists)
+           
+ 
+    
+   
 
 
-# if test in buffer:
-#     print(True)
-# else:
-#     print(False)

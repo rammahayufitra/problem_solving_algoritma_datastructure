@@ -2,9 +2,8 @@
 #include <vector>
 #include <algorithm>
 
-
 int main(){
-    // std::vector <int> nums = {1, 2, -8, -2, 0, -2};
+    //std::vector <int> nums = {1, 2, -8, -2, 0, -2};
     //std::vector <int> nums = {1, 1, 0, 0, 2, -2, -2};
     std::vector <int> nums = {2,2}; 
     std::vector <int> buffer;
@@ -15,7 +14,6 @@ int main(){
             buffer.push_back(nums[i]);
         }
     }
-
 
     for(int i = 0; i<buffer.size(); i++){
         for (int j = 0; j<buffer.size()-i-1; j++){
@@ -42,7 +40,4 @@ int main(){
         std::cout << "] " << buffer[1] << std::endl;
 
     }
-
-   
-
 }

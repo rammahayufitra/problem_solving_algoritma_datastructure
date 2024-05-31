@@ -13,7 +13,6 @@ int main() {
         data.push_back(inner_list);
     }
 
-
     std::cout << "["; 
 
     // Printing the generated 2D array

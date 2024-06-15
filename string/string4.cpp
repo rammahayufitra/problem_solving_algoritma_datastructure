@@ -1,39 +1,49 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
+#include <cctype> // for std::isalnum
 
-std::string find_largest_word(std::string input){
-    std::vector<std::string> buffer;
-    std::string temp;
+int main() {
+    std::string txt = "python-programming is easy to learn"; 
+    
+    std::map<std::vector<char>, int> mapping;
+    std::vector<char> chr; 
 
-    for(int i = 0; i < input.size(); i++){
-        if(input[i] != ' ' && input[i] != '-'){
-            temp += input[i]; 
+    for (int i = 0; i < txt.size(); i++) {
+        if (std::isalnum(txt[i])) {
+            chr.push_back(txt[i]);
         } else {
-            if(!temp.empty()){
-                buffer.push_back(temp);
-                temp.clear();
+            if (!chr.empty()) {
+                mapping[chr] = chr.size();
+                chr.clear();
             }
         }
     }
-    
-    if(!temp.empty()){
-        buffer.push_back(temp);
+
+    // Add the last word if there is any
+    if (!chr.empty()) {
+        mapping[chr] = chr.size();
     }
 
-    std::string largest_word;
-    for(const auto& word : buffer){
-        if(word.size() > largest_word.size()){
-            largest_word = word;
+    // Find the maximum size
+    int maxSize = 0;
+    for (const auto& pair : mapping) {
+        if (pair.second > maxSize) {
+            maxSize = pair.second;
         }
     }
 
-    return largest_word;
-}
+    // Print words with the maximum size
+    std::cout << "Word(s) with maximum size (" << maxSize << "):" << std::endl;
+    for (const auto& pair : mapping) {
+        if (pair.second == maxSize) {
+            for (char c : pair.first) {
+                std::cout << c;
+            }
+            std::cout << std::endl;
+        }
+    }
 
-int main(){
-    std::string input = "C++ is a general-purpose programming language.";
-    std::string largest_word = find_largest_word(input);
-    std::cout << "The largest word is: " << largest_word << std::endl;
-    
+    return 0;
 }

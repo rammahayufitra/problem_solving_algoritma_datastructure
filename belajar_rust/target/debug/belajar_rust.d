@@ -1,0 +1,1 @@
+/home/ramma/problem_solving_algoritma_datastructure/belajar_rust/target/debug/belajar_rust: /home/ramma/problem_solving_algoritma_datastructure/belajar_rust/src/main.rs
